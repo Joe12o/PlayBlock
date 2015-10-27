@@ -8,7 +8,7 @@ public interface ExposedQueue {
 
     /**
      * Get the underlying queue behavior.
-     * 
+     *
      * @return the queue behavior
      */
     QueueBehavior getQueueBehavior();

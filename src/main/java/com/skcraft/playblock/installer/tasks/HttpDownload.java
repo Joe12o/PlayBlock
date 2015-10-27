@@ -1,5 +1,9 @@
 package com.skcraft.playblock.installer.tasks;
 
+import com.sk89q.task.Task;
+import com.sk89q.task.TaskException;
+import com.skcraft.playblock.util.IOUtils;
+
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -7,10 +11,6 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-
-import com.sk89q.task.Task;
-import com.sk89q.task.TaskException;
-import com.skcraft.playblock.util.IOUtils;
 
 /**
  * Downloads a URL to a file.

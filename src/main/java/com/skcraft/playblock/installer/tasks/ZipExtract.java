@@ -1,22 +1,17 @@
 package com.skcraft.playblock.installer.tasks;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
+import com.sk89q.task.Task;
+import com.skcraft.playblock.util.IOUtils;
+
+import java.io.*;
 import java.util.Enumeration;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
 
-import com.sk89q.task.Task;
-import com.skcraft.playblock.util.IOUtils;
-
 /**
  * Extracts a .zip file's contents to a directory.
- * 
+ * <p/>
  * <p>
  * Zip files may traverse outside their target directory.
  * </p>
@@ -28,11 +23,9 @@ public class ZipExtract extends Task {
 
     /**
      * Extract a given file to a given directory.
-     * 
-     * @param file
-     *            the file
-     * @param targetDir
-     *            the target directory
+     *
+     * @param file      the file
+     * @param targetDir the target directory
      */
     public ZipExtract(File file, File targetDir) {
         this.file = file;

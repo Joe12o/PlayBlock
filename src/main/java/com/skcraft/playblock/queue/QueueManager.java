@@ -11,7 +11,7 @@ public class QueueManager {
 
     /**
      * Create a new media queue.
-     * 
+     *
      * @return the new media queue
      */
     public MediaQueue createQueue() {
@@ -20,7 +20,7 @@ public class QueueManager {
 
     /**
      * Get the queue timer.
-     * 
+     *
      * @return the queue timer
      */
     Timer getQueueTimer() {

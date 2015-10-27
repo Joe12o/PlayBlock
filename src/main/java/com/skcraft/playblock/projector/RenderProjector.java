@@ -1,19 +1,17 @@
 package com.skcraft.playblock.projector;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ResourceLocation;
-
-import org.lwjgl.opengl.GL11;
-
 import com.skcraft.playblock.player.MediaManager;
 import com.skcraft.playblock.player.MediaPlayerClient;
 import com.skcraft.playblock.player.MediaRenderer;
 import com.skcraft.playblock.player.RendererState;
 import com.skcraft.playblock.util.DrawUtils;
 import com.skcraft.playblock.util.MathUtils;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.FontRenderer;
+import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ResourceLocation;
+import org.lwjgl.opengl.GL11;
 
 /**
  * Renders the screen for the projector blocks.
@@ -34,9 +32,8 @@ public class RenderProjector extends TileEntitySpecialRenderer {
 
     /**
      * Construct a new instance.
-     * 
-     * @param mediaManager
-     *            the media manager.
+     *
+     * @param mediaManager the media manager.
      */
     public RenderProjector(MediaManager mediaManager) {
         this.mediaManager = mediaManager;
@@ -55,14 +52,14 @@ public class RenderProjector extends TileEntitySpecialRenderer {
 
         // Calculate the rotation
         switch (metadata) {
-        case 0:
-            rot = 180;
-            break;
-        case 2:
-            rot = 0;
-            break;
-        default:
-            rot = metadata * 90;
+            case 0:
+                rot = 180;
+                break;
+            case 2:
+                rot = 0;
+                break;
+            default:
+                rot = metadata * 90;
         }
 
         GL11.glPushMatrix();
@@ -83,13 +80,10 @@ public class RenderProjector extends TileEntitySpecialRenderer {
 
     /**
      * Draw the video screen, which may include error messages.
-     * 
-     * @param projector
-     *            the projector
-     * @param width
-     *            the width
-     * @param height
-     *            the height
+     *
+     * @param projector the projector
+     * @param width     the width
+     * @param height    the height
      */
     private void drawScreen(TileEntityProjector projector, float width, float height) {
         if (!mediaManager.isSupported()) {
@@ -133,11 +127,9 @@ public class RenderProjector extends TileEntitySpecialRenderer {
 
     /**
      * Draw the screen indicating the status of the PlayBlock installation.
-     * 
-     * @param width
-     *            the width of the screen
-     * @param height
-     *            the height of the screen
+     *
+     * @param width  the width of the screen
+     * @param height the height of the screen
      */
     private void drawPlayBlockStatus(float width, float height) {
         DrawUtils.drawRect(0, 0, width, height, 0xff717171);
@@ -167,13 +159,10 @@ public class RenderProjector extends TileEntitySpecialRenderer {
 
     /**
      * Draw the logo animation.
-     * 
-     * @param t
-     *            the time offset
-     * @param width
-     *            the width of the entire screen
-     * @param height
-     *            the height of the entire screen
+     *
+     * @param t      the time offset
+     * @param width  the width of the entire screen
+     * @param height the height of the entire screen
      * @return true if the logo has finished animating
      */
     private boolean drawLogo(double t, float width, float height) {
@@ -182,7 +171,7 @@ public class RenderProjector extends TileEntitySpecialRenderer {
         }
 
         float alpha = (float) (MathUtils.easeInQuad(t, 0, 1, LOGO_DURATION * 0.4) - // Entrance
-        MathUtils.easeInOutCubic(t - LOGO_DURATION * 0.6, 0, 1, LOGO_DURATION * 0.4)); // Exit
+                MathUtils.easeInOutCubic(t - LOGO_DURATION * 0.6, 0, 1, LOGO_DURATION * 0.4)); // Exit
 
         GL11.glPushMatrix();
         {
@@ -212,13 +201,10 @@ public class RenderProjector extends TileEntitySpecialRenderer {
 
     /**
      * Draw the spinner animation.
-     * 
-     * @param t
-     *            the time offset
-     * @param width
-     *            the width of the entire screen
-     * @param height
-     *            the height of the entire screen
+     *
+     * @param t      the time offset
+     * @param width  the width of the entire screen
+     * @param height the height of the entire screen
      */
     private void drawSpinner(double t, float width, float height) {
 
@@ -253,21 +239,14 @@ public class RenderProjector extends TileEntitySpecialRenderer {
 
     /**
      * Draws a textbox at a location.
-     * 
-     * @param x0
-     *            top left x
-     * @param y0
-     *            top left y
-     * @param x1
-     *            bottom right X
-     * @param y1
-     *            bottom right Y
-     * @param centered
-     *            true if centered
-     * @param bgColor
-     *            background color
-     * @param lines
-     *            text lines
+     *
+     * @param x0       top left x
+     * @param y0       top left y
+     * @param x1       bottom right X
+     * @param y1       bottom right Y
+     * @param centered true if centered
+     * @param bgColor  background color
+     * @param lines    text lines
      */
     private void drawTextBox(float x0, float y0, float x1, float y1, boolean centered, int bgColor, String... lines) {
 

@@ -1,6 +1,8 @@
 package com.sk89q.forge;
 
 import io.netty.buffer.ByteBufInputStream;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.nbt.NBTTagCompound;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -8,19 +10,16 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.nbt.NBTTagCompound;
-
 /**
  * Manages a list of {@link Behavior}s.
- * 
+ * <p/>
  * <p>
  * Multiple behaviors can be added to this list and the events of each one will
  * bubble to listeners assigned specifically to this list. In addition, any
  * calls for {@link Behavior} on this method will be passed on all the behaviors
  * within this list.
  * </p>
- * 
+ * <p/>
  * <p>
  * Behaviors should not throw exceptions, as those are not caught by the methods
  * on this list, and that may result in undefined behavior (beyond the scope of

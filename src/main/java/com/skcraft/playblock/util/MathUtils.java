@@ -10,13 +10,10 @@ public final class MathUtils {
 
     /**
      * Clamp a value between two bounds (inclusive).
-     * 
-     * @param value
-     *            the value
-     * @param min
-     *            the minimum
-     * @param max
-     *            the maximum
+     *
+     * @param value the value
+     * @param min   the minimum
+     * @param max   the maximum
      * @return the clamped value
      */
     public static float clamp(float value, float min, float max) {
@@ -25,15 +22,11 @@ public final class MathUtils {
 
     /**
      * Quadratic ease-in function.
-     * 
-     * @param t
-     *            time
-     * @param b
-     *            initial value
-     * @param c
-     *            change in value
-     * @param d
-     *            duration
+     *
+     * @param t time
+     * @param b initial value
+     * @param c change in value
+     * @param d duration
      * @return the value
      */
     public static double easeInQuad(double t, double b, double c, double d) {
@@ -47,15 +40,11 @@ public final class MathUtils {
 
     /**
      * Cubic ease-in/out function.
-     * 
-     * @param t
-     *            time
-     * @param b
-     *            initial value
-     * @param c
-     *            change in value
-     * @param d
-     *            duration
+     *
+     * @param t time
+     * @param b initial value
+     * @param c change in value
+     * @param d duration
      * @return the value
      */
     public static double easeInOutCubic(double t, double b, double c, double d) {

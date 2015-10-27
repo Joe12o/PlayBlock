@@ -1,14 +1,14 @@
 package com.skcraft.playblock.queue;
 
-import java.io.IOException;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
-
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.SettableFuture;
 import com.skcraft.playblock.media.InvalidLengthException;
 import com.skcraft.playblock.media.Media;
 import com.skcraft.playblock.media.MediaResolver;
+
+import java.io.IOException;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 public class SimpleQueueSupervisor implements QueueSupervisor {
 

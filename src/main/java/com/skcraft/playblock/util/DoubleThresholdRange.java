@@ -1,10 +1,9 @@
 package com.skcraft.playblock.util;
 
+import com.sk89q.forge.AbstractBehavior;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityClientPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
-
-import com.sk89q.forge.AbstractBehavior;
 
 /**
  * Manages subscribing clients to a resource based on their distance away.
@@ -23,9 +22,9 @@ public class DoubleThresholdRange extends AbstractBehavior {
     /**
      * Gets the range (in blocks) at which the player will activate and start
      * playing.
-     * 
-     * @see #getTriggerRangeSq() get the squared version, which is faster
+     *
      * @return the range in blocks
+     * @see #getTriggerRangeSq() get the squared version, which is faster
      */
     public float getTriggerRange() {
         return Math.round(Math.sqrt(triggerRange) * 100 / 100);
@@ -34,7 +33,7 @@ public class DoubleThresholdRange extends AbstractBehavior {
     /**
      * Gets the range (in blocks) at which the player will activate and start
      * playing.
-     * 
+     *
      * @return the range in blocks, squared
      */
     public float getTriggerRangeSq() {
@@ -44,9 +43,8 @@ public class DoubleThresholdRange extends AbstractBehavior {
     /**
      * Sets the range (in blocks) at which the player will activate and start
      * playing.
-     * 
-     * @param range
-     *            the range in blocks
+     *
+     * @param range the range in blocks
      */
     public void setTriggerRange(float range) {
         float v = MathUtils.clamp(range, 1, MAX_RANGE);
@@ -57,9 +55,9 @@ public class DoubleThresholdRange extends AbstractBehavior {
     /**
      * Gets the range (in blocks) at which the player will stop playing if it is
      * currently playing.
-     * 
-     * @see #getFadeRangeSq() get the squared version, which is faster
+     *
      * @return the range
+     * @see #getFadeRangeSq() get the squared version, which is faster
      */
     public float getFadeRange() {
         return Math.round(Math.sqrt(fadeRange) * 100 / 100);
@@ -68,7 +66,7 @@ public class DoubleThresholdRange extends AbstractBehavior {
     /**
      * Gets the range (in blocks) at which the player will stop playing if it is
      * currently playing.
-     * 
+     *
      * @return the range in blocks, squared
      */
     public float getFadeRangeSq() {
@@ -78,9 +76,8 @@ public class DoubleThresholdRange extends AbstractBehavior {
     /**
      * Sets the range (in blocks) at which the player will stop playing if it is
      * currently playing.
-     * 
-     * @param range
-     *            range in blocks, squared
+     *
+     * @param range range in blocks, squared
      */
     public void setFadeRange(float range) {
         float v = MathUtils.clamp(range, 1, MAX_RANGE + MIN_BUFFER_RANGE);
@@ -103,9 +100,8 @@ public class DoubleThresholdRange extends AbstractBehavior {
 
     /**
      * Return whether the distance given is within the trigger range.
-     * 
-     * @param distance
-     *            the distance (squared)
+     *
+     * @param distance the distance (squared)
      * @return true if within range
      */
     public boolean inTriggerRangeSq(double distance) {
@@ -115,9 +111,8 @@ public class DoubleThresholdRange extends AbstractBehavior {
     /**
      * Return whether the distance given is within the fade range (the distance
      * is greater than the fade range).
-     * 
-     * @param distance
-     *            the distance (squared)
+     *
+     * @param distance the distance (squared)
      * @return true if within range
      */
     public boolean inFadeRangeSq(double distance) {
@@ -126,7 +121,7 @@ public class DoubleThresholdRange extends AbstractBehavior {
 
     /**
      * Create a local player range test.
-     * 
+     *
      * @return the test
      */
     public RangeTest createRangeTest() {
@@ -135,9 +130,8 @@ public class DoubleThresholdRange extends AbstractBehavior {
 
     /**
      * Write NBT data that needs to be saved to the world.
-     * 
-     * @param tag
-     *            the tag
+     *
+     * @param tag the tag
      */
     @Override
     public void writeSaveNBT(NBTTagCompound tag) {
@@ -147,9 +141,8 @@ public class DoubleThresholdRange extends AbstractBehavior {
 
     /**
      * Read NBT data that has been retrieved from a saved world.
-     * 
-     * @param tag
-     *            the tag
+     *
+     * @param tag the tag
      */
     @Override
     public void readSaveNBT(NBTTagCompound tag) {

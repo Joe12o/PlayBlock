@@ -1,15 +1,13 @@
 package com.skcraft.playblock.util;
 
-import static com.skcraft.playblock.util.EnvUtils.getProgramFiles;
-import static com.skcraft.playblock.util.EnvUtils.getProgramFiles32;
-import static com.skcraft.playblock.util.EnvUtils.join;
+import com.skcraft.playblock.util.EnvUtils.*;
 
 import java.io.File;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.skcraft.playblock.util.EnvUtils.Arch;
+import static com.skcraft.playblock.util.EnvUtils.*;
 
 /**
  * Helps manage the various paths required for PlayBlock.
@@ -23,13 +21,13 @@ public final class PlayBlockPaths {
 
     /**
      * Get the path to where Minecraft is stored.
-     * 
+     * <p/>
      * <p>
      * This should not be the "true" path where Minecraft is stored for the
      * current (if applicable) instance, but rather the global one that is used
      * for a vanilla installation.
      * </p>
-     * 
+     *
      * @return the path to Minecraft
      */
     public static File getMinecraftDir() {
@@ -38,25 +36,25 @@ public final class PlayBlockPaths {
         File workingDir;
 
         switch (EnvUtils.getPlatform()) {
-        case LINUX:
-        case SOLARIS:
-            workingDir = new File(homeDir, "." + appDir + "/");
-            break;
-
-        case WINDOWS:
-            String applicationData = System.getenv("APPDATA");
-            if (applicationData != null)
-                workingDir = new File(applicationData, "." + appDir + "/");
-            else
+            case LINUX:
+            case SOLARIS:
                 workingDir = new File(homeDir, "." + appDir + "/");
-            break;
+                break;
 
-        case MAC_OS_X:
-            workingDir = new File(homeDir, "Library/Application Support/" + appDir);
-            break;
+            case WINDOWS:
+                String applicationData = System.getenv("APPDATA");
+                if (applicationData != null)
+                    workingDir = new File(applicationData, "." + appDir + "/");
+                else
+                    workingDir = new File(homeDir, "." + appDir + "/");
+                break;
 
-        default:
-            workingDir = new File(homeDir, appDir + "/");
+            case MAC_OS_X:
+                workingDir = new File(homeDir, "Library/Application Support/" + appDir);
+                break;
+
+            default:
+                workingDir = new File(homeDir, appDir + "/");
         }
 
         return workingDir;
@@ -65,7 +63,7 @@ public final class PlayBlockPaths {
     /**
      * Get the directory where the support files will reside on the system for
      * the current user of this computer.
-     * 
+     *
      * @return the directory
      */
     public static File getPlayBlockDir() {
@@ -77,7 +75,7 @@ public final class PlayBlockPaths {
     /**
      * Get the path to the support libraries directory that contains further
      * sub-directories for each architecture.
-     * 
+     *
      * @return the libraries directory
      */
     public static File getPlayBlockLibsDir() {
@@ -87,9 +85,8 @@ public final class PlayBlockPaths {
     /**
      * Get the path to the support libraries directory that contains the native
      * library files.
-     * 
-     * @param arch
-     *            the architecture
+     *
+     * @param arch the architecture
      * @return the libraries directory
      */
     public static File getPlayBlockArchLibsDir(Arch arch) {
@@ -99,7 +96,7 @@ public final class PlayBlockPaths {
     /**
      * Get the path to the support libraries directory that contains the native
      * library files, based on the architecture of the running JVM.
-     * 
+     *
      * @return the libraries directory
      */
     public static File getPlayBlockArchLibsDir() {
@@ -108,9 +105,8 @@ public final class PlayBlockPaths {
 
     /**
      * Returns whether the given path contains an installation of our libraries.
-     * 
-     * @param dir
-     *            the directory
+     *
+     * @param dir the directory
      * @return true if it contains the install
      */
     public static boolean containsInstall(File dir) {
@@ -120,7 +116,7 @@ public final class PlayBlockPaths {
 
     /**
      * Get a list of search paths for native libraries.
-     * 
+     *
      * @return a list of paths
      */
     public static Collection<File> getSearchPaths() {
@@ -140,46 +136,46 @@ public final class PlayBlockPaths {
         if ((!containsInstall(ourInstallDir) && !useSystemLibs.equalsIgnoreCase("false")) || useSystemLibs.equalsIgnoreCase("force")) {
 
             switch (EnvUtils.getPlatform()) {
-            case WINDOWS:
-                File getProgramFiles = getProgramFiles();
-                File programFiles32 = getProgramFiles32();
+                case WINDOWS:
+                    File getProgramFiles = getProgramFiles();
+                    File programFiles32 = getProgramFiles32();
 
-                if (getProgramFiles != null) {
-                    searchPaths.add(join(getProgramFiles, "VideoLAN", "VLC"));
-                }
-
-                if (programFiles32 != null) {
-                    searchPaths.add(join(programFiles32, "VideoLAN", "VLC"));
-                }
-
-                // Try registry
-                String installDir = null;
-                try {
-                    installDir = WinRegistry.readString(WinRegistry.HKEY_LOCAL_MACHINE, "Software\\VideoLAN\\VLC", "InstallDir");
-                    if (installDir != null) {
-                        File file = new File(installDir);
-                        if (file.exists()) {
-                            searchPaths.add(file);
-                        }
+                    if (getProgramFiles != null) {
+                        searchPaths.add(join(getProgramFiles, "VideoLAN", "VLC"));
                     }
-                } catch (Throwable t) {
-                }
 
-                break;
+                    if (programFiles32 != null) {
+                        searchPaths.add(join(programFiles32, "VideoLAN", "VLC"));
+                    }
 
-            case MAC_OS_X:
-                // This may or may not work
-                searchPaths.add(new File("/Applications/VLC.app/Contents/MacOS"));
-                searchPaths.add(new File("/Applications/VLC.app/Contents/MacOS/lib"));
+                    // Try registry
+                    String installDir = null;
+                    try {
+                        installDir = WinRegistry.readString(WinRegistry.HKEY_LOCAL_MACHINE, "Software\\VideoLAN\\VLC", "InstallDir");
+                        if (installDir != null) {
+                            File file = new File(installDir);
+                            if (file.exists()) {
+                                searchPaths.add(file);
+                            }
+                        }
+                    } catch (Throwable t) {
+                    }
 
-                break;
+                    break;
 
-            case LINUX:
-            case SOLARIS:
-            case UNKNOWN:
-                searchPaths.add(new File("/lib"));
-                searchPaths.add(new File("/usr/local/lib"));
-                break;
+                case MAC_OS_X:
+                    // This may or may not work
+                    searchPaths.add(new File("/Applications/VLC.app/Contents/MacOS"));
+                    searchPaths.add(new File("/Applications/VLC.app/Contents/MacOS/lib"));
+
+                    break;
+
+                case LINUX:
+                case SOLARIS:
+                case UNKNOWN:
+                    searchPaths.add(new File("/lib"));
+                    searchPaths.add(new File("/usr/local/lib"));
+                    break;
             }
         }
 

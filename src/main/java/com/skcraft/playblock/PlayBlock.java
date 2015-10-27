@@ -1,10 +1,6 @@
 package com.skcraft.playblock;
 
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.Logger;
-
 import com.skcraft.playblock.client.ClientRuntime;
-
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -15,6 +11,8 @@ import cpw.mods.fml.common.event.FMLServerStartedEvent;
 import cpw.mods.fml.common.event.FMLServerStoppingEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.Logger;
 
 @Mod(modid = PlayBlock.MOD_ID, name = PlayBlock.MOD_NAME, dependencies = PlayBlock.DEPENDENCIES)
 public class PlayBlock {
@@ -56,7 +54,7 @@ public class PlayBlock {
     /**
      * Get the runtime, which may be either a {@link ClientRuntime} or a
      * {@link SharedRuntime}.
-     * 
+     *
      * @return the runtime
      */
     public static SharedRuntime getRuntime() {
@@ -65,7 +63,7 @@ public class PlayBlock {
 
     /**
      * Get the client runtime.
-     * 
+     *
      * @return the client runtime
      */
     @SideOnly(Side.CLIENT)

@@ -1,7 +1,11 @@
 package com.skcraft.playblock.projector;
 
-import java.util.List;
-
+import com.skcraft.playblock.PlayBlock;
+import com.skcraft.playblock.PlayBlockCreativeTab;
+import com.skcraft.playblock.queue.ExposedQueue;
+import com.skcraft.playblock.util.StringUtils;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -10,13 +14,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
 
-import com.skcraft.playblock.PlayBlock;
-import com.skcraft.playblock.PlayBlockCreativeTab;
-import com.skcraft.playblock.queue.ExposedQueue;
-import com.skcraft.playblock.util.StringUtils;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import java.util.List;
 
 public class ItemRemote extends Item {
 
@@ -91,11 +89,9 @@ public class ItemRemote extends Item {
 
     /**
      * Get the {@link ExposedQueue} from an instance of an item.
-     * 
-     * @param world
-     *            the current world
-     * @param item
-     *            the item
+     *
+     * @param world the current world
+     * @param item  the item
      * @return the linked object, otherwise null
      */
     public static ExposedQueue getLinked(World world, ItemStack item) {

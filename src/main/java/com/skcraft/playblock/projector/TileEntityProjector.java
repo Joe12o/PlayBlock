@@ -1,31 +1,6 @@
 package com.skcraft.playblock.projector;
 
-import io.netty.buffer.ByteBufInputStream;
-import io.netty.buffer.ByteBufOutputStream;
-import io.netty.buffer.Unpooled;
-
-import java.io.IOException;
-import java.util.List;
-
-import li.cil.oc.api.machine.Arguments;
-import li.cil.oc.api.machine.Callback;
-import li.cil.oc.api.machine.Context;
-import li.cil.oc.api.network.SimpleComponent;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.NetworkManager;
-import net.minecraft.network.Packet;
-import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.AxisAlignedBB;
-
-import org.apache.logging.log4j.Level;
-
-import com.sk89q.forge.BehaviorList;
-import com.sk89q.forge.BehaviorListener;
-import com.sk89q.forge.BehaviorPayload;
-import com.sk89q.forge.PayloadReceiver;
-import com.sk89q.forge.TileEntityPayload;
+import com.sk89q.forge.*;
 import com.skcraft.playblock.PacketHandler;
 import com.skcraft.playblock.PlayBlock;
 import com.skcraft.playblock.SharedRuntime;
@@ -38,7 +13,6 @@ import com.skcraft.playblock.queue.QueueBehavior;
 import com.skcraft.playblock.util.AccessList;
 import com.skcraft.playblock.util.DoubleThresholdRange;
 import com.skcraft.playblock.util.DoubleThresholdRange.RangeTest;
-
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.common.network.ByteBufUtils;
@@ -46,6 +20,24 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.internal.FMLProxyPacket;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import io.netty.buffer.ByteBufInputStream;
+import io.netty.buffer.ByteBufOutputStream;
+import io.netty.buffer.Unpooled;
+import li.cil.oc.api.machine.Arguments;
+import li.cil.oc.api.machine.Callback;
+import li.cil.oc.api.machine.Context;
+import li.cil.oc.api.network.SimpleComponent;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.Packet;
+import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.AxisAlignedBB;
+import org.apache.logging.log4j.Level;
+
+import java.io.IOException;
+import java.util.List;
 
 /**
  * The tile entity for the projector block.
@@ -92,7 +84,7 @@ public class TileEntityProjector extends TileEntity implements BehaviorListener,
 
     /**
      * Get the behaviors of this projector.
-     * 
+     *
      * @return the list of behaviors
      */
     public BehaviorList getBehaviors() {
@@ -101,7 +93,7 @@ public class TileEntityProjector extends TileEntity implements BehaviorListener,
 
     /**
      * Get the media player.
-     * 
+     *
      * @return the media player
      */
     public MediaPlayer getMediaPlayer() {
@@ -110,7 +102,7 @@ public class TileEntityProjector extends TileEntity implements BehaviorListener,
 
     /**
      * Get the range manager.
-     * 
+     *
      * @return the range manager, null if on the server
      */
     public DoubleThresholdRange getRange() {
@@ -119,7 +111,7 @@ public class TileEntityProjector extends TileEntity implements BehaviorListener,
 
     /**
      * Get the options controller.
-     * 
+     *
      * @return options controller
      */
     public ProjectorOptions getOptions() {
@@ -128,7 +120,7 @@ public class TileEntityProjector extends TileEntity implements BehaviorListener,
 
     /**
      * Get the access list.
-     * 
+     *
      * @return the access list, null if on the client
      */
     public AccessList getAccessList() {
@@ -137,7 +129,7 @@ public class TileEntityProjector extends TileEntity implements BehaviorListener,
 
     /**
      * Get the queue behavior.
-     * 
+     *
      * @return the queue behavior
      */
     @Override
@@ -147,7 +139,7 @@ public class TileEntityProjector extends TileEntity implements BehaviorListener,
 
     /**
      * Get the local player is in range.
-     * 
+     *
      * @return true if in range
      */
     public boolean inRange() {
@@ -272,7 +264,7 @@ public class TileEntityProjector extends TileEntity implements BehaviorListener,
     @Optional.Method(modid = "OpenComputers")
     public Object[] getURL(Context context, Arguments args) {
         String uri = this.mediaPlayer.getUri();
-        return new Object[] { uri };
+        return new Object[]{uri};
     }
 
     @Callback

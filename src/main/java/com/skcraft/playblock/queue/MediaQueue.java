@@ -1,13 +1,9 @@
 package com.skcraft.playblock.queue;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
-import java.util.TimerTask;
-
 import com.skcraft.playblock.media.Media;
 import com.skcraft.playblock.media.PlayingMedia;
+
+import java.util.*;
 
 /**
  * Handles a queue of media by keeping track of queued media and automatically
@@ -25,9 +21,8 @@ public class MediaQueue {
 
     /**
      * Construct a new media queue.
-     * 
-     * @param queueManager
-     *            the queue manager
+     *
+     * @param queueManager the queue manager
      */
     MediaQueue(QueueManager queueManager) {
         this.queueManager = queueManager;
@@ -35,9 +30,8 @@ public class MediaQueue {
 
     /**
      * Add a listener for events.
-     * 
-     * @param listener
-     *            the listener
+     *
+     * @param listener the listener
      */
     public synchronized void addQueueListener(QueueListener listener) {
         listeners.add(listener);
@@ -46,9 +40,8 @@ public class MediaQueue {
     /**
      * Remove a listener. If the listener isn't registered, then nothing will
      * happen.
-     * 
-     * @param listener
-     *            the listener
+     *
+     * @param listener the listener
      */
     public synchronized void removeQueueListener(QueueListener listener) {
         listeners.remove(listener);
@@ -56,9 +49,8 @@ public class MediaQueue {
 
     /**
      * Fire {@link QueueListener#mediaComplete(Media)} events.
-     * 
-     * @param media
-     *            the media
+     *
+     * @param media the media
      */
     private synchronized void fireMediaComplete(Media media) {
         for (QueueListener listener : listeners) {
@@ -68,9 +60,8 @@ public class MediaQueue {
 
     /**
      * Fire {@link QueueListener#mediaAdvance(Media)} events.
-     * 
-     * @param media
-     *            the media, or null
+     *
+     * @param media the media, or null
      */
     private synchronized void fireMediaAdvance(Media media) {
         for (QueueListener listener : listeners) {
@@ -80,9 +71,8 @@ public class MediaQueue {
 
     /**
      * Advance to the next media and "complete" the currently playing media.
-     * 
-     * @param media
-     *            the media, null to not play more media
+     *
+     * @param media the media, null to not play more media
      */
     private synchronized void advanceTo(Media media) {
         if (playing != null) {
@@ -111,13 +101,12 @@ public class MediaQueue {
 
     /**
      * Add media to the queue, or play immediately if the queue was empty.
-     * 
+     * <p/>
      * <p>
      * The passed media must have its length known.
      * </p>
-     * 
-     * @param media
-     *            the media
+     *
+     * @param media the media
      */
     public synchronized void add(Media media) {
         if (media.getLength() == null) {
@@ -133,7 +122,7 @@ public class MediaQueue {
 
     /**
      * Get the currently playing media.
-     * 
+     *
      * @return the currently playing media, or null if nothing is playing
      */
     public synchronized PlayingMedia getCurrentMedia() {
@@ -143,7 +132,7 @@ public class MediaQueue {
     /**
      * Mark this queue for release, indicating that it is no longer to be used.
      * It is important that this method is called in order to release resources.
-     * 
+     * <p/>
      * <p>
      * This will not fire any events on added {@link QueueListener}s.
      * </p>

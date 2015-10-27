@@ -1,20 +1,17 @@
 package com.skcraft.playblock.projector;
 
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.gui.GuiTextField;
-import net.minecraft.util.ResourceLocation;
-
-import org.lwjgl.input.Keyboard;
-import org.lwjgl.opengl.GL11;
-
 import com.skcraft.playblock.media.MediaResolver;
 import com.skcraft.playblock.player.MediaPlayer;
 import com.skcraft.playblock.util.DoubleThresholdRange;
 import com.skcraft.playblock.util.StringUtils;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.gui.GuiTextField;
+import net.minecraft.util.ResourceLocation;
+import org.lwjgl.input.Keyboard;
+import org.lwjgl.opengl.GL11;
 
 /**
  * The GUI for the projector.
@@ -24,7 +21,7 @@ public class GuiProjector extends GuiScreen {
 
     public static final int ID = 0;
     private static final int defaultTextColor = 14737632; // Hardcoded, from the
-                                                          // text box;
+    // text box;
     private static final int xSize = 247;
     private static final int ySize = 165;
 
@@ -79,13 +76,10 @@ public class GuiProjector extends GuiScreen {
 
     /**
      * Prepare a text field for entry.
-     * 
-     * @param field
-     *            the field
-     * @param length
-     *            the maximum length of the string
-     * @param text
-     *            the initial text
+     *
+     * @param field  the field
+     * @param length the maximum length of the string
+     * @param text   the initial text
      */
     private void initTextField(GuiTextField field, int length, String text) {
         field.setVisible(true);

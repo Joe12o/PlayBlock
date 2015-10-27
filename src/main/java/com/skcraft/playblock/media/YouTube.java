@@ -1,11 +1,11 @@
 package com.skcraft.playblock.media;
 
+import com.sk89q.mapquery.MapQuery;
+import com.skcraft.playblock.util.HttpRequest;
+
 import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import com.sk89q.mapquery.MapQuery;
-import com.skcraft.playblock.util.HttpRequest;
 
 /**
  * Looks up information about YouTube URIs.
@@ -28,9 +28,9 @@ public class YouTube implements MediaProvider {
      * Regex for matching YouTube links (including youtu.be links).
      */
     private static final Pattern urlPattern = Pattern.compile("^https?://(?:www\\.)?" + // https://www.
-                                                                                        // portion
-            "(?:youtube\\.com/+watch\\?.*(?<=[&\\?])v=|youtu\\.be/+)" + // Prefix
-            "([A-Za-z0-9_\\-]+).*$", // Video ID
+                    // portion
+                    "(?:youtube\\.com/+watch\\?.*(?<=[&\\?])v=|youtu\\.be/+)" + // Prefix
+                    "([A-Za-z0-9_\\-]+).*$", // Video ID
             Pattern.CASE_INSENSITIVE);
 
     @Override

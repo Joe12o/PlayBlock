@@ -1,15 +1,13 @@
 package com.skcraft.playblock.player;
 
-import java.util.List;
-
+import com.skcraft.playblock.PlayBlock;
 import org.apache.logging.log4j.Level;
-
 import uk.co.caprica.vlcj.binding.internal.libvlc_media_t;
 import uk.co.caprica.vlcj.binding.internal.libvlc_state_t;
 import uk.co.caprica.vlcj.player.MediaPlayer;
 import uk.co.caprica.vlcj.player.MediaPlayerEventAdapter;
 
-import com.skcraft.playblock.PlayBlock;
+import java.util.List;
 
 /**
  * Logs semi-useful debugging messages to console.
@@ -92,22 +90,22 @@ public class PlayerEventListener extends MediaPlayerEventAdapter {
         }
 
         switch (state) {
-        case libvlc_Buffering:
-            return RendererState.BUFFERING;
-        case libvlc_Ended:
-            return RendererState.STOPPED;
-        case libvlc_Error:
-            return RendererState.ERROR;
-        case libvlc_NothingSpecial:
-            return RendererState.STOPPED;
-        case libvlc_Opening:
-            return RendererState.BUFFERING;
-        case libvlc_Paused:
-            return RendererState.PAUSED;
-        case libvlc_Playing:
-            return RendererState.PLAYING;
-        case libvlc_Stopped:
-            return RendererState.STOPPED;
+            case libvlc_Buffering:
+                return RendererState.BUFFERING;
+            case libvlc_Ended:
+                return RendererState.STOPPED;
+            case libvlc_Error:
+                return RendererState.ERROR;
+            case libvlc_NothingSpecial:
+                return RendererState.STOPPED;
+            case libvlc_Opening:
+                return RendererState.BUFFERING;
+            case libvlc_Paused:
+                return RendererState.PAUSED;
+            case libvlc_Playing:
+                return RendererState.PLAYING;
+            case libvlc_Stopped:
+                return RendererState.STOPPED;
         }
 
         return RendererState.STOPPED;

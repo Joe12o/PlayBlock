@@ -1,13 +1,11 @@
 package com.skcraft.playblock.client;
 
-import net.minecraft.world.World;
-
 import com.skcraft.playblock.PlayBlock;
-
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.ClientTickEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.Phase;
+import net.minecraft.world.World;
 
 public class ClientTickHandler {
 

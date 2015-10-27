@@ -1,15 +1,10 @@
 package com.skcraft.playblock;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.Properties;
-
+import cpw.mods.fml.common.Loader;
 import org.apache.logging.log4j.Level;
 
-import cpw.mods.fml.common.Loader;
+import java.io.*;
+import java.util.Properties;
 
 public class SharedConfiguration {
 
@@ -44,7 +39,7 @@ public class SharedConfiguration {
 
     /**
      * Gets an integer.
-     * 
+     *
      * @param key
      * @param def
      * @return the value
@@ -66,7 +61,7 @@ public class SharedConfiguration {
 
     /**
      * Gets a float value.
-     * 
+     *
      * @param key
      * @param def
      * @return the value
@@ -88,7 +83,7 @@ public class SharedConfiguration {
 
     /**
      * Sets a float value and saves it to the properties file.
-     * 
+     *
      * @param key
      * @param value
      */

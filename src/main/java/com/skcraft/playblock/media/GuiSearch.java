@@ -1,19 +1,17 @@
 package com.skcraft.playblock.media;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
+import com.skcraft.playblock.util.GuiScrollbar;
+import com.skcraft.playblock.util.StringUtils;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
-import com.skcraft.playblock.util.GuiScrollbar;
-import com.skcraft.playblock.util.StringUtils;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GuiSearch extends GuiScreen {
 

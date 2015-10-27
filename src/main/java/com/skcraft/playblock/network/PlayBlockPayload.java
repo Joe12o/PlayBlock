@@ -1,12 +1,11 @@
 package com.skcraft.playblock.network;
 
+import com.sk89q.forge.Payload;
+import com.sk89q.forge.TileEntityPayload;
 import io.netty.buffer.ByteBufInputStream;
 import io.netty.buffer.ByteBufOutputStream;
 
 import java.io.IOException;
-
-import com.sk89q.forge.Payload;
-import com.sk89q.forge.TileEntityPayload;
 
 public class PlayBlockPayload implements Payload {
 

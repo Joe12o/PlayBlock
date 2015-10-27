@@ -1,11 +1,10 @@
 package com.skcraft.playblock.network;
 
+import com.sk89q.forge.Payload;
 import io.netty.buffer.ByteBufInputStream;
 import io.netty.buffer.ByteBufOutputStream;
 
 import java.io.IOException;
-
-import com.sk89q.forge.Payload;
 
 public class ProjectorUpdate implements Payload {
 

@@ -26,11 +26,9 @@ public final class EnvUtils {
 
     /**
      * Join several path parts into one {@link File}.
-     * 
-     * @param base
-     *            the base file
-     * @param parts
-     *            the path segments
+     *
+     * @param base  the base file
+     * @param parts the path segments
      * @return the final path
      */
     public static File join(File base, String... parts) {
@@ -39,9 +37,8 @@ public final class EnvUtils {
 
     /**
      * Join several path parts into one {@link File}.
-     * 
-     * @param parts
-     *            the path segments
+     *
+     * @param parts the path segments
      * @return the final path
      */
     public static String join(String... parts) {
@@ -61,7 +58,7 @@ public final class EnvUtils {
 
     /**
      * Get the path to Windows' Program Files directory.
-     * 
+     *
      * @return the path or null
      */
     public static File getProgramFiles() {
@@ -75,7 +72,7 @@ public final class EnvUtils {
     /**
      * Get the path to Windows' Program Files directory for 32-bit programs on a
      * 64-bit system.
-     * 
+     *
      * @return the path or null
      */
     public static File getProgramFiles32() {
@@ -88,7 +85,7 @@ public final class EnvUtils {
 
     /**
      * Get the platform.
-     * 
+     *
      * @return the platform
      */
     public static Platform getPlatform() {
@@ -109,11 +106,11 @@ public final class EnvUtils {
 
     /**
      * Gets the architecture of the JVM.
-     * 
+     * <p/>
      * <p>
      * Right now, this method assumes everything is x86 or x86-64.
      * </p>
-     * 
+     *
      * @return the architecture
      */
     public static Arch getJvmArch() {

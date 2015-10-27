@@ -1,13 +1,6 @@
 package com.skcraft.playblock.util;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.Closeable;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -25,7 +18,9 @@ public class HttpRequest {
 
     public static enum Method {
         GET, POST
-    };
+    }
+
+    ;
 
     private String userAgent = "PlayBlock";
     private int readTimeout = 4000;

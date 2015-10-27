@@ -1,16 +1,10 @@
 package com.skcraft.playblock.installer;
 
-import java.awt.Color;
-import java.awt.Cursor;
+import javax.swing.*;
+import javax.swing.border.Border;
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
-import javax.swing.Action;
-import javax.swing.BorderFactory;
-import javax.swing.Icon;
-import javax.swing.JButton;
-import javax.swing.JComponent;
-import javax.swing.border.Border;
 
 public class LinkButton extends JButton {
 

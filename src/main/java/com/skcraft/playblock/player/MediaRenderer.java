@@ -1,16 +1,14 @@
 package com.skcraft.playblock.player;
 
-import java.nio.ByteBuffer;
-
+import com.skcraft.playblock.util.DrawUtils;
+import com.sun.jna.Memory;
 import org.lwjgl.opengl.GL11;
-
 import uk.co.caprica.vlcj.player.MediaPlayerFactory;
 import uk.co.caprica.vlcj.player.direct.BufferFormat;
 import uk.co.caprica.vlcj.player.direct.DirectMediaPlayer;
 import uk.co.caprica.vlcj.player.direct.RenderCallback;
 
-import com.skcraft.playblock.util.DrawUtils;
-import com.sun.jna.Memory;
+import java.nio.ByteBuffer;
 
 /**
  * Renders a video from a player onto a surface.
@@ -30,13 +28,10 @@ public final class MediaRenderer implements RenderCallback {
 
     /**
      * Create a new media renderer with the given width and height.
-     * 
-     * @param width
-     *            the width
-     * @param height
-     *            the height
-     * @param textureIndex
-     *            the text of the index
+     *
+     * @param width        the width
+     * @param height       the height
+     * @param textureIndex the text of the index
      */
     MediaRenderer(MediaManager mediaManager, int width, int height, int textureIndex) {
         this.mediaManager = mediaManager;
@@ -48,11 +43,9 @@ public final class MediaRenderer implements RenderCallback {
 
     /**
      * Initialize the instance and create a new player.
-     * 
-     * @param factory
-     *            the factory for creating a new player
-     * @param volume
-     *            the initial volume
+     *
+     * @param factory the factory for creating a new player
+     * @param volume  the initial volume
      */
     void initialize(final MediaPlayerFactory factory, final float volume) {
         final MediaRenderer instance = this;
@@ -94,7 +87,7 @@ public final class MediaRenderer implements RenderCallback {
 
     /**
      * Get the time that this renderer was created at.
-     * 
+     *
      * @return UNIX timestamp in milliseconds
      */
     public long getCreationTime() {
@@ -103,7 +96,7 @@ public final class MediaRenderer implements RenderCallback {
 
     /**
      * Return true if this renderer is being released or it has been released.
-     * 
+     *
      * @return true if the renderer has been released
      */
     public boolean isReleased() {
@@ -113,9 +106,9 @@ public final class MediaRenderer implements RenderCallback {
     /**
      * Mark this instance for release so that any object using this renderer
      * (and also {@link MediaManager}) knows that it has been released already.
-     * 
+     *
      * @see MediaManager#release(MediaRenderer) the method where things are
-     *      actually unloaded
+     * actually unloaded
      */
     void markForRelease() {
         released = true;
@@ -123,7 +116,7 @@ public final class MediaRenderer implements RenderCallback {
 
     /**
      * Get the underlying VLCJ player.
-     * 
+     *
      * @return the player
      */
     DirectMediaPlayer getVLCJPlayer() {
@@ -132,7 +125,7 @@ public final class MediaRenderer implements RenderCallback {
 
     /**
      * Get the texture index for this instance.
-     * 
+     *
      * @return the texture index
      */
     int getTextureIndex() {
@@ -141,7 +134,7 @@ public final class MediaRenderer implements RenderCallback {
 
     /**
      * Get the width of the screen.
-     * 
+     *
      * @return the width
      */
     public int getWidth() {
@@ -150,7 +143,7 @@ public final class MediaRenderer implements RenderCallback {
 
     /**
      * Get the height of the screen.
-     * 
+     *
      * @return the height
      */
     public int getHeight() {
@@ -159,13 +152,10 @@ public final class MediaRenderer implements RenderCallback {
 
     /**
      * Play a media file or URL.
-     * 
-     * @param uri
-     *            the path to play
-     * @param position
-     *            milliseconds to skip in the video
-     * @param repeat
-     *            true to repeat the video
+     *
+     * @param uri      the path to play
+     * @param position milliseconds to skip in the video
+     * @param repeat   true to repeat the video
      */
     public void playMedia(final String uri, final long position, final boolean repeat) {
         if (isReleased()) {
@@ -187,9 +177,8 @@ public final class MediaRenderer implements RenderCallback {
 
     /**
      * Play a media file or URL, defaulting to repeat.
-     * 
-     * @param uri
-     *            the path to play
+     *
+     * @param uri the path to play
      */
     public void playMedia(final String uri) {
         playMedia(uri, -1, true);
@@ -210,7 +199,7 @@ public final class MediaRenderer implements RenderCallback {
 
     /**
      * Set the volume of the player.
-     * 
+     *
      * @param volume
      */
     public void setVolume(float volume) {
@@ -223,7 +212,7 @@ public final class MediaRenderer implements RenderCallback {
 
     /**
      * Get the state of this renderer (and the currently playing media)
-     * 
+     *
      * @return the state
      */
     public RendererState getState() {
@@ -236,16 +225,15 @@ public final class MediaRenderer implements RenderCallback {
 
     /**
      * Set the state of this renderer.
-     * 
+     * <p/>
      * <p>
      * This is used by only {@link PlayerEventListener} so that state
      * information can be updated on this renderer. Do not call this method from
      * anywhere else.
      * </p>
-     * 
+     *
+     * @param state the new state
      * @see PlayerEventListener calls this method
-     * @param state
-     *            the new state
      */
     void setState(RendererState state) {
         this.state = state;
@@ -253,19 +241,15 @@ public final class MediaRenderer implements RenderCallback {
 
     /**
      * Draw the display at the given location in 2D.
-     * 
+     * <p/>
      * <p>
      * The video will be resized accordingly.
      * </p>
-     * 
-     * @param x
-     *            the X coordinate
-     * @param y
-     *            the Y coordinate
-     * @param width
-     *            the width of the screen
-     * @param height
-     *            the height of the screen
+     *
+     * @param x      the X coordinate
+     * @param y      the Y coordinate
+     * @param width  the width of the screen
+     * @param height the height of the screen
      */
     public void drawMedia(int x, int y, float width, float height) {
         if (buffer != null && !isReleased()) {

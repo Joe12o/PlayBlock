@@ -1,11 +1,10 @@
 package com.skcraft.playblock.player;
 
-import net.minecraft.nbt.NBTTagCompound;
-
 import com.skcraft.playblock.PlayBlock;
 import com.skcraft.playblock.media.Media;
 import com.skcraft.playblock.media.MediaResolver;
 import com.skcraft.playblock.media.PlayingMedia;
+import net.minecraft.nbt.NBTTagCompound;
 
 /**
  * This class manages the client side of the media player, notably the
@@ -33,20 +32,18 @@ public class MediaPlayerClient extends MediaPlayer {
      * Set the currently playing media clip on this client. This may refer to
      * the URI property (from {@link #getUri()}), but it could also be from
      * something else.
-     * 
+     * <p/>
      * <p>
      * Some validation is performed on the given URI &mdash; if the given URI
      * isn't considered valid according to
      * {@link MediaResolver#canPlayUri(String)}, then the currently playing
      * media clip will be set to null.
      * </p>
-     * 
-     * @param uri
-     *            the URI, null to play nothing
-     * @param position
-     *            a non-negative position to start from, in milliseconds,
-     *            otherwise -1 to indicate that the video should not be time
-     *            shifted
+     *
+     * @param uri      the URI, null to play nothing
+     * @param position a non-negative position to start from, in milliseconds,
+     *                 otherwise -1 to indicate that the video should not be time
+     *                 shifted
      */
     private void setPlaying(String uri, long position) {
         if (uri != null && MediaResolver.canPlayUri(uri)) {
@@ -58,11 +55,11 @@ public class MediaPlayerClient extends MediaPlayer {
 
     /**
      * Return whether there is actually something to play.
-     * 
+     * <p/>
      * <p>
      * There could be a renderer assigned but nothing to actually playing!
      * </p>
-     * 
+     *
      * @return true if there's something to play
      */
     public boolean hasSomethingToPlay() {
@@ -71,7 +68,7 @@ public class MediaPlayerClient extends MediaPlayer {
 
     /**
      * Get the renderer assigned to this tile entity.
-     * 
+     *
      * @return the renderer, or possibly null if there's no renderer yet
      */
     public MediaRenderer getRenderer() {
@@ -89,7 +86,7 @@ public class MediaPlayerClient extends MediaPlayer {
 
     /**
      * Tries to play the media on this projector.
-     * 
+     * <p/>
      * <p>
      * A renderer will be acquired, or a new one will be setup if the width and
      * height have changed.
@@ -117,7 +114,7 @@ public class MediaPlayerClient extends MediaPlayer {
 
     /**
      * Start playing (if possible).
-     * 
+     * <p/>
      * <p>
      * This can be called repeatedly even if something is already playing.
      * </p>
@@ -132,7 +129,7 @@ public class MediaPlayerClient extends MediaPlayer {
 
     /**
      * Stop playing.
-     * 
+     * <p/>
      * <p>
      * This can be called repeatedly even if nothing is playing.
      * </p>

@@ -1,5 +1,8 @@
 package com.skcraft.playblock.projector;
 
+import com.skcraft.playblock.GuiHandler;
+import com.skcraft.playblock.PlayBlock;
+import com.skcraft.playblock.PlayBlockCreativeTab;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
@@ -8,10 +11,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-
-import com.skcraft.playblock.GuiHandler;
-import com.skcraft.playblock.PlayBlock;
-import com.skcraft.playblock.PlayBlockCreativeTab;
 
 /**
  * The projector block.

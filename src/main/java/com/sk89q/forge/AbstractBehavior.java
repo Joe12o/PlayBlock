@@ -1,13 +1,12 @@
 package com.sk89q.forge;
 
 import io.netty.buffer.ByteBufInputStream;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.nbt.NBTTagCompound;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.nbt.NBTTagCompound;
 
 /**
  * An abstract implementation of {@link Behavior} that allows the registration
@@ -50,9 +49,8 @@ public abstract class AbstractBehavior implements Behavior {
 
     /**
      * Fire a networked NBT event that is to be handled by listeners.
-     * 
-     * @param tag
-     *            the tag
+     *
+     * @param tag the tag
      */
     public void fireNetworkedNbt(NBTTagCompound tag) {
         for (BehaviorListener listener : listeners) {
@@ -62,13 +60,11 @@ public abstract class AbstractBehavior implements Behavior {
 
     /**
      * Fire a payload send event that is handled by listeners.
-     * 
-     * @param payload
-     *            the payload
-     * @param players
-     *            the player(s)
+     *
+     * @param payload the payload
+     * @param players the player(s)
      * @see BehaviorListener#payloadSend(BehaviorPayload, List) for more
-     *      information
+     * information
      */
     public void firePayloadSend(BehaviorPayload payload, List<EntityPlayer> players) {
         for (BehaviorListener listener : listeners) {

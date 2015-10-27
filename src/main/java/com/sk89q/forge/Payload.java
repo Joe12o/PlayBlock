@@ -7,7 +7,7 @@ import java.io.IOException;
 
 /**
  * Reads and writes raw bytes.
- * 
+ * <p/>
  * <p>
  * Instances of payload are meant to be encapsulated in a container protocol
  * that can do the required signaling to make sure payloads end up at the right
@@ -18,21 +18,17 @@ public interface Payload {
 
     /**
      * Read data from the given input stream.
-     * 
-     * @param in
-     *            the input stream
-     * @throws IOException
-     *             on I/O error
+     *
+     * @param in the input stream
+     * @throws IOException on I/O error
      */
     void read(ByteBufInputStream in) throws IOException;
 
     /**
      * Write data to the given output stream.
-     * 
-     * @param out
-     *            the output stream
-     * @throws IOException
-     *             on I/O error
+     *
+     * @param out the output stream
+     * @throws IOException on I/O error
      */
     void write(ByteBufOutputStream out) throws IOException;
 

@@ -1,9 +1,9 @@
 package com.skcraft.playblock.installer.tasks;
 
-import java.io.File;
-
 import com.sk89q.task.Task;
 import com.skcraft.playblock.installer.SetupUtils;
+
+import java.io.File;
 
 public class DirectoryDelete extends Task {
 

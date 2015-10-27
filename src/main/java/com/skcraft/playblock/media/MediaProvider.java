@@ -13,12 +13,11 @@ public interface MediaProvider {
     /**
      * Get the confidence level of this resolver that is the best provider of
      * metadata for the given URI. A reasonable confidence level would be 100.
-     * 
-     * @param uri
-     *            the uri
+     *
+     * @param uri the uri
      * @return a non-negative integer indicating confidence, with 0 implying no
-     *         confidence, and {@link Integer#MAX_VALUE} implying maximum
-     *         confidence
+     * confidence, and {@link Integer#MAX_VALUE} implying maximum
+     * confidence
      */
     int getConfidence(String uri);
 
@@ -26,9 +25,8 @@ public interface MediaProvider {
      * Lookup information about the given URI and return a non-null
      * {@link Media} object describing the media located at the given URI, as
      * best as possible.
-     * 
-     * @param uri
-     *            the URI
+     *
+     * @param uri the URI
      * @return information about the given URI, possibly none
      * @throws IOException
      */

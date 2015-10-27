@@ -1,10 +1,10 @@
 package com.skcraft.playblock.util;
 
+import net.minecraft.entity.player.EntityPlayer;
+
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-
-import net.minecraft.entity.player.EntityPlayer;
 
 /**
  * Privates a very simple way to see who may have access to a block, depending

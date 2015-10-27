@@ -1,12 +1,10 @@
 package com.skcraft.playblock.projector;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Gui;
-
 import com.skcraft.playblock.queue.GuiQueue;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Gui;
 
 @SideOnly(Side.CLIENT)
 public class GuiProjectorQueueSlot extends Gui {
@@ -27,9 +25,8 @@ public class GuiProjectorQueueSlot extends Gui {
 
     /**
      * Draws the slot.
-     * 
-     * @param position
-     *            position in the list
+     *
+     * @param position position in the list
      * @param guiLeft
      * @param guiTop
      */
@@ -53,7 +50,7 @@ public class GuiProjectorQueueSlot extends Gui {
 
     /**
      * Sets this as the selected slot
-     * 
+     *
      * @param selected
      */
     public void setSelected(boolean selected) {

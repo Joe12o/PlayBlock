@@ -1,15 +1,5 @@
 package com.skcraft.playblock.queue;
 
-import io.netty.buffer.ByteBufInputStream;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import net.minecraft.entity.player.EntityPlayer;
-
-import org.apache.logging.log4j.Level;
-
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
@@ -24,6 +14,13 @@ import com.skcraft.playblock.network.Enqueue;
 import com.skcraft.playblock.network.EnqueueResponse;
 import com.skcraft.playblock.network.EnqueueResponse.Response;
 import com.skcraft.playblock.player.MediaPlayerHost;
+import io.netty.buffer.ByteBufInputStream;
+import net.minecraft.entity.player.EntityPlayer;
+import org.apache.logging.log4j.Level;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Accepts requests to add media clips to the queue, as well as for managing the
@@ -35,9 +32,8 @@ public class QueueBehavior extends AbstractBehavior {
 
     /**
      * Create a new queue behavior.
-     * 
-     * @param host
-     *            the host, or null if it is the client
+     *
+     * @param host the host, or null if it is the client
      */
     public QueueBehavior(MediaPlayerHost host) {
         this.host = host;
@@ -45,7 +41,7 @@ public class QueueBehavior extends AbstractBehavior {
 
     /**
      * Get the current media queue of the host.
-     * 
+     *
      * @return the media queue, or null if the host is not in queue mode
      */
     private MediaQueue getQueue() {
@@ -54,9 +50,8 @@ public class QueueBehavior extends AbstractBehavior {
 
     /**
      * Submit a URI to be added to the queue.
-     * 
-     * @param uri
-     *            the URI
+     *
+     * @param uri the URI
      * @return a future
      */
     public ListenableFuture<EnqueueResponse> sendEnqueueRequest(String uri) {
@@ -72,15 +67,11 @@ public class QueueBehavior extends AbstractBehavior {
 
     /**
      * Send a response to an queue add attempt.
-     * 
-     * @param request
-     *            the original payload with the request to enqueue
-     * @param player
-     *            the player to send it to
-     * @param type
-     *            the type of response
-     * @param media
-     *            the media clip, or null
+     *
+     * @param request the original payload with the request to enqueue
+     * @param player  the player to send it to
+     * @param type    the type of response
+     * @param media   the media clip, or null
      */
     protected void sendEnqueueResponse(Enqueue request, EntityPlayer player, Response type, Media media) {
         EnqueueResponse response = new EnqueueResponse(type, media);
@@ -92,11 +83,9 @@ public class QueueBehavior extends AbstractBehavior {
 
     /**
      * Read an {@link Enqueue}.
-     * 
-     * @param player
-     *            the player
-     * @param enqueue
-     *            the payload
+     *
+     * @param player  the player
+     * @param enqueue the payload
      */
     private void handleClientEnqueue(final EntityPlayer player, final Enqueue enqueue) {
         MediaQueue queue = getQueue();

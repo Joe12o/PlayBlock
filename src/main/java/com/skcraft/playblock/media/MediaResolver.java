@@ -1,14 +1,13 @@
 package com.skcraft.playblock.media;
 
+import com.skcraft.playblock.queue.QueueException;
+import com.skcraft.playblock.util.Validate;
+import net.minecraft.server.MinecraftServer;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
-
-import net.minecraft.server.MinecraftServer;
-
-import com.skcraft.playblock.queue.QueueException;
-import com.skcraft.playblock.util.Validate;
 
 /**
  * A media resolver identifies types and media and returns metadata about media
@@ -36,14 +35,11 @@ public class MediaResolver {
      * Lookup information about the given URI and return a non-null
      * {@link Media} object describing the media located at the given URI, as
      * best as possible.
-     * 
-     * @param uri
-     *            the URI
+     *
+     * @param uri the URI
      * @return information about the given URI, possibly none
-     * @throws IOException
-     *             on an error
-     * @throws QueueException
-     *             on non-I/O error
+     * @throws IOException    on an error
+     * @throws QueueException on non-I/O error
      */
     public Media lookup(String uri) throws IOException, QueueException {
         Validate.notNull(uri);
@@ -73,9 +69,8 @@ public class MediaResolver {
 
     /**
      * Try to clean up poorly copied and pasted URIs.
-     * 
-     * @param uri
-     *            the URI
+     *
+     * @param uri the URI
      * @return a cleaned up URI
      */
     public static String cleanUri(String uri) {
@@ -100,9 +95,8 @@ public class MediaResolver {
 
     /**
      * Checks if a URI is allowed to play.
-     * 
-     * @param uri
-     *            the URI
+     *
+     * @param uri the URI
      * @return true if valid
      */
     public static boolean canPlayUri(String uri) {

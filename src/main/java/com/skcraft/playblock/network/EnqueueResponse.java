@@ -1,14 +1,13 @@
 package com.skcraft.playblock.network;
 
-import io.netty.buffer.ByteBufInputStream;
-import io.netty.buffer.ByteBufOutputStream;
-
-import java.io.IOException;
-
 import com.sk89q.forge.Payload;
 import com.sk89q.forge.RequestResponse;
 import com.skcraft.playblock.media.Media;
 import com.skcraft.playblock.util.IOUtils;
+import io.netty.buffer.ByteBufInputStream;
+import io.netty.buffer.ByteBufOutputStream;
+
+import java.io.IOException;
 
 /**
  * A server -> client response to an {@link Enqueue}.

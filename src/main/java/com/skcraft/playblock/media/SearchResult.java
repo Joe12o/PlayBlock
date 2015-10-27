@@ -1,9 +1,9 @@
 package com.skcraft.playblock.media;
 
-import java.util.List;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
+
+import java.util.List;
 
 public class SearchResult extends Gui {
 

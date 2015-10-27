@@ -1,9 +1,9 @@
 package com.skcraft.playblock.player;
 
-import java.nio.ByteBuffer;
-
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
+
+import java.nio.ByteBuffer;
 
 /**
  * A simple texture cache to re-use generated textures that is optimized to have
@@ -18,11 +18,9 @@ public class TextureCache {
 
     /**
      * Create the texture used to draw the video.
-     * 
-     * @param width
-     *            the width of the video
-     * @param height
-     *            the height of the video
+     *
+     * @param width  the width of the video
+     * @param height the height of the video
      * @return the texture index
      */
     public int createTexture(int width, int height) {
@@ -58,9 +56,8 @@ public class TextureCache {
 
     /**
      * Delete a texture.
-     * 
-     * @param index
-     *            the texture index
+     *
+     * @param index the texture index
      */
     public void deleteTexture(int index) {
         if (index == lastIndex) {
@@ -72,9 +69,8 @@ public class TextureCache {
 
     /**
      * Try to delete a texture.
-     * 
-     * @param index
-     *            the texture index
+     *
+     * @param index the texture index
      */
     private void tryDeleteTexture(int index) {
         try {

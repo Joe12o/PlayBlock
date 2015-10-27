@@ -1,12 +1,11 @@
 package com.skcraft.playblock.player;
 
-import java.awt.Frame;
-
+import com.sk89q.task.ProgressListener;
+import com.skcraft.playblock.installer.PlayBlockSetup;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.ChatComponentText;
 
-import com.sk89q.task.ProgressListener;
-import com.skcraft.playblock.installer.PlayBlockSetup;
+import java.awt.*;
 
 /**
  * Manages installation of libraries from within the game.
@@ -15,7 +14,9 @@ public class EmbeddedInstaller implements ProgressListener {
 
     public static enum State {
         NOT_INSTALLING, INSTALLING, ERROR, RESTART_NEEDED
-    };
+    }
+
+    ;
 
     private PlayBlockSetup installer;
 
@@ -48,7 +49,7 @@ public class EmbeddedInstaller implements ProgressListener {
 
     /**
      * Get the state of the installer.
-     * 
+     *
      * @return state
      */
     public State getState() {
@@ -57,19 +58,19 @@ public class EmbeddedInstaller implements ProgressListener {
 
     /**
      * Get the message shown on the screen.
-     * 
+     *
      * @return the message
      */
     public String getStatusMessage() {
         switch (state) {
-        case NOT_INSTALLING:
-            return "Not installing...";
-        case INSTALLING:
-            return String.format("%.1f%% installed...", lastProgress * 100);
-        case ERROR:
-            return "Error during install!";
-        case RESTART_NEEDED:
-            return "Please restart your game.";
+            case NOT_INSTALLING:
+                return "Not installing...";
+            case INSTALLING:
+                return String.format("%.1f%% installed...", lastProgress * 100);
+            case ERROR:
+                return "Error during install!";
+            case RESTART_NEEDED:
+                return "Please restart your game.";
         }
 
         throw new RuntimeException("Missing state message");

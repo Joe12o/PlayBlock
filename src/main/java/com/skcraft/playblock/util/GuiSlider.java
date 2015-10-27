@@ -1,12 +1,10 @@
 package com.skcraft.playblock.util;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiButton;
-
-import org.lwjgl.opengl.GL11;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiButton;
+import org.lwjgl.opengl.GL11;
 
 @SideOnly(Side.CLIENT)
 public abstract class GuiSlider extends GuiButton {
@@ -25,31 +23,29 @@ public abstract class GuiSlider extends GuiButton {
 
     /**
      * Gets the string displayed on the slider.
-     * 
-     * @param value
-     *            the value
+     *
+     * @param value the value
      * @return the text
      */
     public abstract String getValueText(float value);
 
     /**
      * Returns the initial value.
-     * 
+     *
      * @return the value
      */
     public abstract float getInitialValue();
 
     /**
      * Gets called when the value changes.
-     * 
-     * @param value
-     *            the value
+     *
+     * @param value the value
      */
     public abstract void onValue(float value);
 
     /**
      * Gets the current value.
-     * 
+     *
      * @return the value
      */
     public float getValue() {

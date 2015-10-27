@@ -1,16 +1,5 @@
 package com.skcraft.playblock.queue;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.gui.GuiTextField;
-import net.minecraft.util.ResourceLocation;
-
-import org.lwjgl.input.Keyboard;
-import org.lwjgl.opengl.GL11;
-
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
@@ -19,9 +8,17 @@ import com.skcraft.playblock.network.EnqueueResponse;
 import com.skcraft.playblock.projector.GuiProjectorQueueSlot;
 import com.skcraft.playblock.util.GuiScrollbar;
 import com.skcraft.playblock.util.StringUtils;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.gui.GuiTextField;
+import net.minecraft.util.ResourceLocation;
+import org.lwjgl.input.Keyboard;
+import org.lwjgl.opengl.GL11;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The GUI for the media queue.
@@ -168,9 +165,8 @@ public class GuiQueue extends GuiScreen {
 
     /**
      * Creates a slot with the given name.
-     * 
-     * @param name
-     *            the name
+     *
+     * @param name the name
      */
     public void createSlot(String name) {
         slots.add(new GuiProjectorQueueSlot(this, mc, name));
@@ -178,9 +174,8 @@ public class GuiQueue extends GuiScreen {
 
     /**
      * Sets the selected slot.
-     * 
-     * @param slot
-     *            the slot
+     *
+     * @param slot the slot
      */
     public void setSelectedSlot(GuiProjectorQueueSlot slot) {
         for (GuiProjectorQueueSlot queueSlot : slots) {
@@ -196,7 +191,7 @@ public class GuiQueue extends GuiScreen {
 
     /**
      * Renders the media queue.
-     * 
+     *
      * @param left
      * @param top
      */
@@ -226,9 +221,8 @@ public class GuiQueue extends GuiScreen {
 
     /**
      * Submit a URI for the queue.
-     * 
-     * @param uri
-     *            the URI
+     *
+     * @param uri the URI
      */
     protected void submitEnqueue(String uri) {
         ListenableFuture<EnqueueResponse> future = queuable.getQueueBehavior().sendEnqueueRequest(uri);

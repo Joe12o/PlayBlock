@@ -1,6 +1,6 @@
 package com.sk89q.task;
 
-import javax.swing.SwingUtilities;
+import javax.swing.*;
 
 /**
  * Wraps a thread-unsafe listener and makes calls executed within the Swing

@@ -1,13 +1,12 @@
 package com.skcraft.playblock.player;
 
-import net.minecraft.nbt.NBTTagCompound;
-
 import com.skcraft.playblock.PlayBlock;
 import com.skcraft.playblock.media.Media;
 import com.skcraft.playblock.media.PlayingMedia;
 import com.skcraft.playblock.queue.MediaQueue;
 import com.skcraft.playblock.queue.QueueListener;
 import com.skcraft.playblock.queue.QueueManager;
+import net.minecraft.nbt.NBTTagCompound;
 
 /**
  * This class manages the server side of the media player.
@@ -26,7 +25,7 @@ public class MediaPlayerHost extends MediaPlayer implements QueueListener {
 
     /**
      * Get the queue.
-     * 
+     *
      * @return the queue, or null if there is no queue
      */
     public MediaQueue getQueue() {

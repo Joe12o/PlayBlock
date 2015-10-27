@@ -1,32 +1,5 @@
 package com.skcraft.playblock.installer;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import java.awt.Window;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.io.InputStream;
-import java.lang.reflect.Method;
-
-import javax.imageio.ImageIO;
-import javax.swing.BorderFactory;
-import javax.swing.Box;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JProgressBar;
-import javax.swing.SwingConstants;
-import javax.swing.UIManager;
-import javax.swing.WindowConstants;
-
 import com.sk89q.task.ProgressListener;
 import com.sk89q.task.SwingProgressListener;
 import com.sk89q.task.Task;
@@ -35,6 +8,18 @@ import com.skcraft.playblock.installer.tasks.Install;
 import com.skcraft.playblock.installer.tasks.Uninstall;
 import com.skcraft.playblock.util.EnvUtils;
 import com.skcraft.playblock.util.EnvUtils.Arch;
+
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
+import java.lang.reflect.Method;
 
 public class PlayBlockSetup extends JFrame implements ProgressListener {
 
@@ -284,9 +269,8 @@ public class PlayBlockSetup extends JFrame implements ProgressListener {
 
     /**
      * Set the auto-request focus property, if it's available.
-     * 
-     * @param autoRequestFocus
-     *            true to auto request focus
+     *
+     * @param autoRequestFocus true to auto request focus
      */
     private void _setAutoRequestFocus(Boolean autoRequestFocus) {
         try {

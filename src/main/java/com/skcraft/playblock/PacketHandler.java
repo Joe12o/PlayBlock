@@ -1,13 +1,19 @@
 package com.skcraft.playblock;
 
+import com.sk89q.forge.PayloadReceiver;
+import com.sk89q.forge.TileEntityPayload;
+import com.skcraft.playblock.network.PlayBlockPayload;
+import com.skcraft.playblock.projector.TileEntityProjector;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.network.ByteBufUtils;
+import cpw.mods.fml.common.network.FMLNetworkEvent;
+import cpw.mods.fml.common.network.internal.FMLProxyPacket;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufInputStream;
 import io.netty.buffer.ByteBufOutputStream;
 import io.netty.buffer.Unpooled;
-
-import java.io.IOException;
-import java.util.List;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -15,20 +21,10 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetHandlerPlayServer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-
 import org.apache.logging.log4j.Level;
 
-import com.sk89q.forge.PayloadReceiver;
-import com.sk89q.forge.TileEntityPayload;
-import com.skcraft.playblock.network.PlayBlockPayload;
-import com.skcraft.playblock.projector.TileEntityProjector;
-
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.network.ByteBufUtils;
-import cpw.mods.fml.common.network.FMLNetworkEvent;
-import cpw.mods.fml.common.network.internal.FMLProxyPacket;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import java.io.IOException;
+import java.util.List;
 
 /**
  * Handles packets for PlayBlock.
@@ -49,11 +45,11 @@ public class PacketHandler {
 
             // Figure out what we are containing
             switch (container.getType()) {
-            case TILE_ENTITY:
-                handleTilePayload(world, entityPlayer, in);
-                break;
-            case TILE_ENTITY_NBT:
-                handleNetworkedNBT(world, evt.packet.payload());
+                case TILE_ENTITY:
+                    handleTilePayload(world, entityPlayer, in);
+                    break;
+                case TILE_ENTITY_NBT:
+                    handleNetworkedNBT(world, evt.packet.payload());
             }
         } catch (IOException e) {
             PlayBlock.log(Level.WARN, "Failed to read packet data from " + entityPlayer.getDisplayName(), e);
@@ -82,11 +78,11 @@ public class PacketHandler {
 
             // Figure out what we are containing
             switch (container.getType()) {
-            case TILE_ENTITY:
-                handleTilePayload(world, entityPlayer, in);
-                break;
-            case TILE_ENTITY_NBT:
-                handleNetworkedNBT(world, evt.packet.payload());
+                case TILE_ENTITY:
+                    handleTilePayload(world, entityPlayer, in);
+                    break;
+                case TILE_ENTITY_NBT:
+                    handleNetworkedNBT(world, evt.packet.payload());
             }
         } catch (IOException e) {
             PlayBlock.log(Level.WARN, "Failed to read packet data from " + entityPlayer.getDisplayName(), e);
@@ -135,9 +131,8 @@ public class PacketHandler {
 
     /**
      * Send a payload to the server.
-     * 
-     * @param payload
-     *            the payload
+     *
+     * @param payload the payload
      */
     public static void sendToServer(PlayBlockPayload payload) {
         ByteBufOutputStream out = new ByteBufOutputStream(Unpooled.buffer());

@@ -8,7 +8,7 @@ import java.io.IOException;
 /**
  * A payload designed for usage with {@link Behavior}s. A type field is provided
  * to differentiate different payload types for each {@link Behavior}.
- * 
+ * <p/>
  * <p>
  * However, to prevent payload ID collision, it is important for projects to
  * define a standard for assigning such IDs.

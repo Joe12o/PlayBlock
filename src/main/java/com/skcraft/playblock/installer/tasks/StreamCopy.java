@@ -1,10 +1,10 @@
 package com.skcraft.playblock.installer.tasks;
 
+import com.sk89q.task.Task;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-
-import com.sk89q.task.Task;
 
 public class StreamCopy extends Task {
 

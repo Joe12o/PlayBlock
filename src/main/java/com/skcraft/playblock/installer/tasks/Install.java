@@ -1,15 +1,15 @@
 package com.skcraft.playblock.installer.tasks;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
-
 import com.sk89q.task.Task;
 import com.sk89q.task.TaskException;
 import com.skcraft.playblock.util.EnvUtils;
 import com.skcraft.playblock.util.EnvUtils.Arch;
 import com.skcraft.playblock.util.PlayBlockPaths;
+
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 
 /**
  * Install support files.
@@ -32,27 +32,27 @@ public class Install extends Task {
         String url;
 
         switch (EnvUtils.getPlatform()) {
-        case WINDOWS:
-            if (arch == Arch.X86_64) {
-                url = URL_WIN64;
-            } else {
-                url = URL_WIN32;
-            }
-            break;
+            case WINDOWS:
+                if (arch == Arch.X86_64) {
+                    url = URL_WIN64;
+                } else {
+                    url = URL_WIN32;
+                }
+                break;
 
-        case MAC_OS_X:
-            if (arch == Arch.X86_64) {
-                url = URL_MAC64;
-            } else {
-                url = URL_MAC32;
-            }
-            break;
+            case MAC_OS_X:
+                if (arch == Arch.X86_64) {
+                    url = URL_MAC64;
+                } else {
+                    url = URL_MAC32;
+                }
+                break;
 
-        case LINUX:
-            throw new TaskException("<html>Sorry, please install the appropriate " + "version (32-bit or 64-bit) of VLC for your system using " + "your package manager (apt-get, yum, etc.)");
+            case LINUX:
+                throw new TaskException("<html>Sorry, please install the appropriate " + "version (32-bit or 64-bit) of VLC for your system using " + "your package manager (apt-get, yum, etc.)");
 
-        default:
-            throw new TaskException("Sorry, your platform is not supported.");
+            default:
+                throw new TaskException("Sorry, your platform is not supported.");
         }
 
         File tempFile = File.createTempFile("playblock-libvlc-", null);
