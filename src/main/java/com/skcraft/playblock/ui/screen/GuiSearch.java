@@ -1,6 +1,9 @@
-package com.skcraft.playblock.media;
+package com.skcraft.playblock.ui.screen;
 
-import com.skcraft.playblock.util.GuiScrollbar;
+import com.skcraft.playblock.media.Media;
+import com.skcraft.playblock.media.YouTube;
+import com.skcraft.playblock.ui.widget.GuiScrollbar;
+import com.skcraft.playblock.ui.widget.SearchResult;
 import com.skcraft.playblock.util.StringUtils;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;

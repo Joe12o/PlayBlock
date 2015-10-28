@@ -9,6 +9,7 @@ import com.skcraft.playblock.queue.ExposedQueue;
 import com.skcraft.playblock.queue.QueueManager;
 import com.skcraft.playblock.queue.QueueSupervisor;
 import com.skcraft.playblock.queue.SimpleQueueSupervisor;
+import com.skcraft.playblock.ui.GuiHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartedEvent;

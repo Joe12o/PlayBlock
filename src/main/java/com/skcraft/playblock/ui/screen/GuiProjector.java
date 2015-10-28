@@ -1,7 +1,8 @@
-package com.skcraft.playblock.projector;
+package com.skcraft.playblock.ui.screen;
 
 import com.skcraft.playblock.media.MediaResolver;
 import com.skcraft.playblock.player.MediaPlayer;
+import com.skcraft.playblock.projector.TileEntityProjector;
 import com.skcraft.playblock.util.DoubleThresholdRange;
 import com.skcraft.playblock.util.StringUtils;
 import cpw.mods.fml.relauncher.Side;

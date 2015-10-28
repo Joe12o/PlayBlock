@@ -1,12 +1,13 @@
-package com.skcraft.playblock.queue;
+package com.skcraft.playblock.ui.screen;
 
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.skcraft.playblock.media.MediaResolver;
 import com.skcraft.playblock.network.EnqueueResponse;
-import com.skcraft.playblock.projector.GuiProjectorQueueSlot;
-import com.skcraft.playblock.util.GuiScrollbar;
+import com.skcraft.playblock.ui.widget.GuiProjectorQueueSlot;
+import com.skcraft.playblock.queue.ExposedQueue;
+import com.skcraft.playblock.ui.widget.GuiScrollbar;
 import com.skcraft.playblock.util.StringUtils;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

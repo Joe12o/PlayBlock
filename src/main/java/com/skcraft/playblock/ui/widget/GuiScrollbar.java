@@ -1,4 +1,4 @@
-package com.skcraft.playblock.util;
+package com.skcraft.playblock.ui.widget;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;

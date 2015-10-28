@@ -1,6 +1,6 @@
 package com.skcraft.playblock.projector;
 
-import com.skcraft.playblock.GuiHandler;
+import com.skcraft.playblock.ui.GuiHandler;
 import com.skcraft.playblock.PlayBlock;
 import com.skcraft.playblock.PlayBlockCreativeTab;
 import net.minecraft.block.Block;

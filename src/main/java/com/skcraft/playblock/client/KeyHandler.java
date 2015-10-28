@@ -1,6 +1,6 @@
 package com.skcraft.playblock.client;
 
-import com.skcraft.playblock.GuiHandler;
+import com.skcraft.playblock.ui.GuiHandler;
 import com.skcraft.playblock.PlayBlock;
 import com.skcraft.playblock.util.StringUtils;
 import cpw.mods.fml.client.registry.ClientRegistry;

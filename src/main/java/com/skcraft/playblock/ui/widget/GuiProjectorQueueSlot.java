@@ -1,6 +1,6 @@
-package com.skcraft.playblock.projector;
+package com.skcraft.playblock.ui.widget;
 
-import com.skcraft.playblock.queue.GuiQueue;
+import com.skcraft.playblock.ui.screen.GuiQueue;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.Minecraft;

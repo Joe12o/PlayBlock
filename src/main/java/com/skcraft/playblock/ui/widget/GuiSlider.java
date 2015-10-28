@@ -1,4 +1,4 @@
-package com.skcraft.playblock.util;
+package com.skcraft.playblock.ui.widget;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

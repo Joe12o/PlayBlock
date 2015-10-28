@@ -1,7 +1,8 @@
-package com.skcraft.playblock;
+package com.skcraft.playblock.ui;
 
-import com.skcraft.playblock.client.GuiOptions;
-import com.skcraft.playblock.projector.GuiProjector;
+import com.skcraft.playblock.PlayBlock;
+import com.skcraft.playblock.ui.screen.GuiOptions;
+import com.skcraft.playblock.ui.screen.GuiProjector;
 import com.skcraft.playblock.projector.TileEntityProjector;
 import cpw.mods.fml.common.network.IGuiHandler;
 import net.minecraft.entity.player.EntityPlayer;

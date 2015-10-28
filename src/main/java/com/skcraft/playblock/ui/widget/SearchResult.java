@@ -1,5 +1,7 @@
-package com.skcraft.playblock.media;
+package com.skcraft.playblock.ui.widget;
 
+import com.skcraft.playblock.ui.screen.GuiSearch;
+import com.skcraft.playblock.media.Media;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 

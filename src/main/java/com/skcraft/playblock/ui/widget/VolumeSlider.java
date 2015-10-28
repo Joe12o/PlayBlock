@@ -1,7 +1,7 @@
-package com.skcraft.playblock.client;
+package com.skcraft.playblock.ui.widget;
 
 import com.skcraft.playblock.player.MediaManager;
-import com.skcraft.playblock.util.GuiSlider;
+import com.skcraft.playblock.ui.widget.GuiSlider;
 import com.skcraft.playblock.util.StringUtils;
 
 public class VolumeSlider extends GuiSlider {

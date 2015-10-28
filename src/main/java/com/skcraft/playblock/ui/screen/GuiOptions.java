@@ -1,8 +1,9 @@
-package com.skcraft.playblock.client;
+package com.skcraft.playblock.ui.screen;
 
 import com.skcraft.playblock.PlayBlock;
+import com.skcraft.playblock.ui.widget.VolumeSlider;
 import com.skcraft.playblock.player.MediaManager;
-import com.skcraft.playblock.util.GuiSlider;
+import com.skcraft.playblock.ui.widget.GuiSlider;
 import com.skcraft.playblock.util.StringUtils;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
