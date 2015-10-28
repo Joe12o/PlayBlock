@@ -46,7 +46,7 @@ public class MediaResolver {
 
         MediaProvider mostConfident = null;
         int topConfidence = 0;
-        Media info = null;
+        Media info;
 
         for (MediaProvider provider : providers) {
             int confidence = provider.getConfidence(uri);
@@ -108,11 +108,7 @@ public class MediaResolver {
 
         // Override with -DplayBlock.allowAnyUri=true or Singleplayer
         MinecraftServer server = MinecraftServer.getServer();
-        if (ALLOW_ANY_URI || (server != null && server.isSinglePlayer())) {
-            return true;
-        }
-
-        return allowedUri.matcher(uri).matches();
+        return ALLOW_ANY_URI || (server != null && server.isSinglePlayer()) || allowedUri.matcher(uri).matches();
     }
 
 }

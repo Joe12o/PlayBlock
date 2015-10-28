@@ -12,11 +12,9 @@ import java.awt.*;
  */
 public class EmbeddedInstaller implements ProgressListener {
 
-    public static enum State {
+    public enum State {
         NOT_INSTALLING, INSTALLING, ERROR, RESTART_NEEDED
     }
-
-    ;
 
     private PlayBlockSetup installer;
 

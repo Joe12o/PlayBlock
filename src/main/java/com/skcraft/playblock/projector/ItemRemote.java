@@ -59,10 +59,10 @@ public class ItemRemote extends Item {
         }
 
         NBTTagCompound tag = item.getTagCompound();
-        item.getTagCompound().setInteger("dim", world.provider.dimensionId);
-        item.getTagCompound().setInteger("x", x);
-        item.getTagCompound().setInteger("y", y);
-        item.getTagCompound().setInteger("z", z);
+        tag.setInteger("dim", world.provider.dimensionId);
+        tag.setInteger("x", x);
+        tag.setInteger("y", y);
+        tag.setInteger("z", z);
 
         player.addChatMessage(new ChatComponentText("Remote linked!"));
 
@@ -100,10 +100,10 @@ public class ItemRemote extends Item {
         }
 
         NBTTagCompound tag = item.getTagCompound();
-        int dim = item.getTagCompound().getInteger("dim");
-        int x = item.getTagCompound().getInteger("x");
-        int y = item.getTagCompound().getInteger("y");
-        int z = item.getTagCompound().getInteger("z");
+        int dim = tag.getInteger("dim");
+        int x = tag.getInteger("x");
+        int y = tag.getInteger("y");
+        int z = tag.getInteger("z");
 
         if (world.provider.dimensionId != dim) {
             return null;

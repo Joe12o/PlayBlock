@@ -7,8 +7,8 @@ import java.io.IOException;
  */
 public interface MediaProvider {
 
-    static final int DEFAULT_CONFIDENCE = 100;
-    static final int NO_CONFIDENCE = 0;
+    int DEFAULT_CONFIDENCE = 100;
+    int NO_CONFIDENCE = 0;
 
     /**
      * Get the confidence level of this resolver that is the best provider of

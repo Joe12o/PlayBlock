@@ -26,7 +26,7 @@ public class ProjectorOptions extends AbstractBehavior {
     }
 
     public void useAccessList(boolean use) {
-        if (use == true) {
+        if (use) {
             if (accessList == null) {
                 accessList = new AccessList();
             }

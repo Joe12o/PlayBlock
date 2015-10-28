@@ -11,7 +11,7 @@ public final class EnvUtils {
      * List of operating systems.
      */
     public enum Platform {
-        WINDOWS, MAC_OS_X, LINUX, SOLARIS, UNKNOWN;
+        WINDOWS, MAC_OS_X, LINUX, SOLARIS, UNKNOWN
     }
 
     /**

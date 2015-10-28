@@ -16,11 +16,9 @@ import java.util.Map.Entry;
  */
 public class HttpRequest {
 
-    public static enum Method {
+    public enum Method {
         GET, POST
     }
-
-    ;
 
     private String userAgent = "PlayBlock";
     private int readTimeout = 4000;
@@ -97,7 +95,7 @@ public class HttpRequest {
     public void read(OutputStream out) throws IOException {
         Validate.notNull(out);
 
-        HttpURLConnection conn = null;
+        HttpURLConnection conn;
         InputStream in = null;
         byte[] postData = null;
 
@@ -133,7 +131,7 @@ public class HttpRequest {
             in = new BufferedInputStream(conn.getInputStream());
 
             byte[] data = new byte[bufferSize];
-            int len = 0;
+            int len;
 
             while ((len = in.read(data, 0, bufferSize)) >= 0) {
                 out.write(data, 0, len);

@@ -71,11 +71,11 @@ public class GuiOptions extends GuiScreen {
         if (installButton != null && button.id == installButton.id) {
             mediaManager.getInstaller().start();
 
-            this.mc.displayGuiScreen((GuiScreen) null);
+            this.mc.displayGuiScreen(null);
             this.mc.setIngameFocus();
 
         } else if (button.id == closeButton.id) {
-            this.mc.displayGuiScreen((GuiScreen) null);
+            this.mc.displayGuiScreen(null);
             this.mc.setIngameFocus();
             PlayBlock.getClientRuntime().getClientOptions().setFloat("volume", volumeSlider.getValue() * 2);
 
@@ -86,7 +86,7 @@ public class GuiOptions extends GuiScreen {
                 this.mc.thePlayer.sendChatMessage("For more information about PlayBlock, see http://skcraft.com");
             }
             PlayBlock.getClientRuntime().getClientOptions().setFloat("volume", volumeSlider.getValue() * 2);
-            this.mc.displayGuiScreen((GuiScreen) null);
+            this.mc.displayGuiScreen(null);
             this.mc.setIngameFocus();
         }
     }

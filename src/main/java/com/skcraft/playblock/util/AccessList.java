@@ -40,15 +40,7 @@ public class AccessList {
         long now = System.currentTimeMillis();
         Long since = allowed.remove(name);
 
-        if (since == null) {
-            return false;
-        }
-
-        if (now - since > MAX_ACCESS_TIME) {
-            return false;
-        }
-
-        return true;
+        return since != null && now - since <= MAX_ACCESS_TIME;
     }
 
     public boolean checkAndForget(EntityPlayer player) {

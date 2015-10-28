@@ -157,8 +157,8 @@ public class GuiSearch extends GuiScreen {
             YouTube yt = new YouTube();
             try {
                 mediaResults = yt.search(queryField.getText(), 1, RESULTS_PER_PAGE);
-                for (int i = 0; i < mediaResults.length; i++) {
-                    addResult(mediaResults[i]);
+                for (Media mediaResult : mediaResults) {
+                    addResult(mediaResult);
                 }
             } catch (IOException e) {
                 errorOccured = true;

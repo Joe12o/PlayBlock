@@ -55,7 +55,6 @@ public class TileEntityProjector extends TileEntity implements BehaviorListener,
     private final QueueBehavior queueBehavior;
 
     private final RangeTest rangeTest;
-    private boolean withinRange = false;
 
     /**
      * Construct a new instance of the projector tile entity.

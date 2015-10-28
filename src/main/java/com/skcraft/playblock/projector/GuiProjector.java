@@ -100,7 +100,7 @@ public class GuiProjector extends GuiScreen {
         if (button.id == applyButton.id) {
             tile.getOptions().sendUpdate(uri, projectorWidth, projectorHeight, triggerRange, fadeRange);
 
-            this.mc.displayGuiScreen((GuiScreen) null);
+            this.mc.displayGuiScreen(null);
             this.mc.setIngameFocus();
         } else if (button.id == clearUriButton.id) {
             uriField.setText("");

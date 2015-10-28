@@ -149,7 +149,7 @@ public final class PlayBlockPaths {
                     }
 
                     // Try registry
-                    String installDir = null;
+                    String installDir;
                     try {
                         installDir = WinRegistry.readString(WinRegistry.HKEY_LOCAL_MACHINE, "Software\\VideoLAN\\VLC", "InstallDir");
                         if (installDir != null) {
