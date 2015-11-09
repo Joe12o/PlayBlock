@@ -21,6 +21,9 @@ version = "1.3.2"
 group = "com.skcraft"
 archivesBaseName = "PlayBlock-MC1.7.10"
 
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
 minecraft {
     version = "1.7.10-10.13.4.1448-1.7.10"
     runDir = "run"
