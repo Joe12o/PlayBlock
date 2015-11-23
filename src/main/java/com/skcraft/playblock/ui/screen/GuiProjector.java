@@ -1,207 +1,88 @@
 package com.skcraft.playblock.ui.screen;
 
-import com.skcraft.playblock.media.MediaResolver;
-import com.skcraft.playblock.player.MediaPlayer;
+import com.skcraft.playblock.PlayBlock;
 import com.skcraft.playblock.projector.TileEntityProjector;
-import com.skcraft.playblock.util.DoubleThresholdRange;
+import com.skcraft.playblock.ui.PlayBlockGui;
+import com.skcraft.playblock.ui.widget.Label;
+import com.skcraft.playblock.ui.widget.SimpleButton;
+import com.skcraft.playblock.ui.widget.SimpleTextField;
 import com.skcraft.playblock.util.StringUtils;
+import com.skcraft.playblock.util.TextureRegion;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.gui.GuiTextField;
-import net.minecraft.util.ResourceLocation;
-import org.lwjgl.input.Keyboard;
-import org.lwjgl.opengl.GL11;
+import org.apache.logging.log4j.Level;
 
 /**
  * The GUI for the projector.
  */
 @SideOnly(Side.CLIENT)
-public class GuiProjector extends GuiScreen {
+public class GuiProjector extends PlayBlockGui {
 
-    public static final int ID = 0;
-    private static final int defaultTextColor = 14737632; // Hardcoded, from the
-    // text box;
-    private static final int xSize = 247;
-    private static final int ySize = 165;
+    private TileEntityProjector projector;
+    private SimpleTextField uriField;
+    private SimpleTextField widthField, heightField;
+    private SimpleTextField triggerField, fadeField;
 
-    private TileEntityProjector tile;
-    private GuiTextField uriField, heightField, widthField, triggerRangeField, fadeRangeField;
-    private GuiButton applyButton;
-    private GuiButton clearUriButton;
-
-    private float projectorWidth, projectorHeight, triggerRange, fadeRange;
-    private String uri;
-
-    public GuiProjector(TileEntityProjector tileEntity) {
-        tile = tileEntity;
-        MediaPlayer mediaPlayer = tileEntity.getMediaPlayer();
-        DoubleThresholdRange range = tileEntity.getRange();
-        uri = mediaPlayer.getUri();
-        projectorWidth = mediaPlayer.getWidth();
-        projectorHeight = mediaPlayer.getHeight();
-        triggerRange = range.getTriggerRange();
-        fadeRange = range.getFadeRange();
+    public GuiProjector(TileEntityProjector projector) {
+        super(new TextureRegion("playblock:textures/gui/projector_bg.png", 247, 165));
+        this.projector = projector;
     }
 
-    /**
-     * Adds the buttons (and other controls) to the screen in question.
-     */
     @Override
     public void initGui() {
-        this.buttonList.clear();
-        Keyboard.enableRepeatEvents(true);
-        int left = (width - xSize) / 2;
-        int top = (height - ySize) / 2;
+        super.initGui();
 
-        this.buttonList.add(applyButton = new GuiButton(0, left + 160, top + 125, 80, 20, StringUtils.translate("gui.done")));
+        addWidget(new SimpleButton(StringUtils.translate("gui.done"), bgLeft + 160, bgTop + 125, 80, 20, () -> {
+            try {
+                projector.getOptions().sendUpdate(uriField.getText(), Float.parseFloat(widthField.getText()),
+                        Float.parseFloat(heightField.getText()), Float.parseFloat(triggerField.getText()),
+                        Float.parseFloat(fadeField.getText()));
+            } catch(NumberFormatException e) {
+                PlayBlock.log(Level.WARN, "Failed to send projector settings update!");
+            }
+            mc.displayGuiScreen(null);
+            mc.setIngameFocus();
+        }));
 
-        this.buttonList.add(clearUriButton = new GuiButton(1, left + 220, top + 14, 17, 20, "X"));
-
-        uriField = new GuiTextField(this.fontRendererObj, left + 60, top + 17, 157, this.fontRendererObj.FONT_HEIGHT + 5);
-        initTextField(uriField, 100, uri);
-
-        heightField = new GuiTextField(this.fontRendererObj, left + 130, top + 37, 50, this.fontRendererObj.FONT_HEIGHT + 5);
-        initTextField(heightField, 10, Float.toString(projectorHeight));
-
-        widthField = new GuiTextField(this.fontRendererObj, left + 60, top + 37, 50, this.fontRendererObj.FONT_HEIGHT + 5);
-        initTextField(widthField, 10, Float.toString(projectorWidth));
-
-        triggerRangeField = new GuiTextField(this.fontRendererObj, left + 60, top + 57, 50, this.fontRendererObj.FONT_HEIGHT + 5);
-        initTextField(triggerRangeField, 10, Float.toString(triggerRange));
-
-        fadeRangeField = new GuiTextField(this.fontRendererObj, left + 60, top + 77, 50, this.fontRendererObj.FONT_HEIGHT + 5);
-        initTextField(fadeRangeField, 10, Float.toString(fadeRange));
-    }
-
-    /**
-     * Prepare a text field for entry.
-     *
-     * @param field  the field
-     * @param length the maximum length of the string
-     * @param text   the initial text
-     */
-    private void initTextField(GuiTextField field, int length, String text) {
-        field.setVisible(true);
-        field.setMaxStringLength(length);
-        field.setEnableBackgroundDrawing(true);
-        field.setCanLoseFocus(true);
-        field.setFocused(false);
-        field.setText(text);
-    }
-
-    @Override
-    public void onGuiClosed() {
-        Keyboard.enableRepeatEvents(false);
-    }
-
-    @Override
-    public void actionPerformed(GuiButton button) {
-        if (button.id == applyButton.id) {
-            tile.getOptions().sendUpdate(uri, projectorWidth, projectorHeight, triggerRange, fadeRange);
-
-            this.mc.displayGuiScreen(null);
-            this.mc.setIngameFocus();
-        } else if (button.id == clearUriButton.id) {
+        addWidget(new SimpleButton("X", bgLeft + 220, bgTop + 14, 17, 20, () -> {
             uriField.setText("");
             uriField.setFocused(true);
-            uri = uriField.getText();
-        }
-    }
+        }));
 
-    /**
-     * Draws the screen and all the components in it.
-     */
-    @Override
-    public void drawScreen(int mouseX, int mouseY, float par3) {
-        GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-        mc.renderEngine.bindTexture(new ResourceLocation("playblock:textures/gui/projector_bg.png"));
-        int left = (width - xSize) / 2;
-        int top = (height - ySize) / 2;
-        drawTexturedModalRect(left, top, 0, 0, xSize, ySize);
-        uriField.drawTextBox();
-        heightField.drawTextBox();
-        widthField.drawTextBox();
-        triggerRangeField.drawTextBox();
-        fadeRangeField.drawTextBox();
+        addWidget(new Label(StringUtils.translate("options.url"), bgLeft + 10, bgTop + 20));
 
-        fontRendererObj.drawString(StringUtils.translate("options.url"), left + 10, top + 20, 0xff999999);
-        fontRendererObj.drawString(StringUtils.translate("options.screenSize"), left + 10, top + 40, 0xff999999);
-        fontRendererObj.drawString("x", left + 117, top + 40, 0xff999999);
-        fontRendererObj.drawString(StringUtils.translate("options.turnOn"), left + 10, top + 60, 0xff999999);
-        fontRendererObj.drawString(StringUtils.translate("options.blocksAway"), left + 117, top + 60, 0xff999999);
-        fontRendererObj.drawString(StringUtils.translate("options.turnOff"), left + 10, top + 80, 0xff999999);
-        fontRendererObj.drawString(StringUtils.translate("options.blocksAway"), left + 117, top + 80, 0xff999999);
-        fontRendererObj.drawString("TEST VERSION - skcraft.com", left + 10, top + 132, 0xffffffff);
+        addWidget(uriField = new SimpleTextField(bgLeft + 60, bgTop + 17, 157, fontRendererObj.FONT_HEIGHT + 4, 250));
 
-        super.drawScreen(mouseX, mouseY, par3);
-    }
+        addWidget(new Label(StringUtils.translate("options.screenSize"), bgLeft + 10, bgTop + 40));
 
-    @Override
-    protected void mouseClicked(int x, int y, int buttonClicked) {
-        super.mouseClicked(x, y, buttonClicked);
-        uriField.mouseClicked(x, y, buttonClicked);
-        heightField.mouseClicked(x, y, buttonClicked);
-        widthField.mouseClicked(x, y, buttonClicked);
-        triggerRangeField.mouseClicked(x, y, buttonClicked);
-        fadeRangeField.mouseClicked(x, y, buttonClicked);
-    }
+        addWidget(widthField = new SimpleTextField(bgLeft + 60, bgTop + 37, 50, fontRendererObj.FONT_HEIGHT + 4, 8,
+                SimpleTextField.Type.FLOATING_POINT));
 
-    @Override
-    protected void keyTyped(char key, int par2) {
-        super.keyTyped(key, par2);
+        addWidget(new Label("x", bgLeft + 117, bgTop + 40));
 
-        if (uriField.isFocused()) {
-            uriField.textboxKeyTyped(key, par2);
-            uri = uriField.getText();
+        addWidget(heightField = new SimpleTextField(bgLeft + 130, bgTop + 37, 50, fontRendererObj.FONT_HEIGHT + 4, 8,
+                SimpleTextField.Type.FLOATING_POINT));
 
-            if (MediaResolver.canPlayUri(MediaResolver.cleanUri(uri))) {
-                uriField.setTextColor(defaultTextColor);
-            } else {
-                uriField.setTextColor(0xffff0000);
-            }
-        }
+        addWidget(new Label(StringUtils.translate("options.turnOn"), bgLeft + 10, bgTop + 60));
 
-        if (Character.isDigit(key) || par2 == 14 || par2 == 52 || par2 == 199 || par2 == 203 || par2 == 205 || par2 == 207 || par2 == 211) {
-            if (heightField.isFocused()) {
-                heightField.textboxKeyTyped(key, par2);
-                if (heightField.getText().length() != 0) {
-                    try {
-                        projectorHeight = Float.parseFloat(heightField.getText());
-                    } catch (NumberFormatException e) {
-                    }
-                }
-            } else if (widthField.isFocused()) {
-                widthField.textboxKeyTyped(key, par2);
-                if (widthField.getText().length() != 0) {
-                    try {
-                        projectorWidth = Float.parseFloat(widthField.getText());
-                    } catch (NumberFormatException e) {
-                    }
-                }
-            } else if (triggerRangeField.isFocused()) {
-                triggerRangeField.textboxKeyTyped(key, par2);
-                if (triggerRangeField.getText().length() != 0) {
-                    try {
-                        triggerRange = Float.parseFloat(triggerRangeField.getText());
-                    } catch (NumberFormatException e) {
-                    }
-                }
-            } else if (fadeRangeField.isFocused()) {
-                fadeRangeField.textboxKeyTyped(key, par2);
-                if (fadeRangeField.getText().length() != 0) {
-                    try {
-                        fadeRange = Float.parseFloat(fadeRangeField.getText());
-                    } catch (NumberFormatException e) {
-                    }
-                }
-            }
-        }
-    }
+        addWidget(triggerField = new SimpleTextField(bgLeft + 60, bgTop + 57, 50, fontRendererObj.FONT_HEIGHT + 4, 8,
+                SimpleTextField.Type.FLOATING_POINT));
 
-    @Override
-    public boolean doesGuiPauseGame() {
-        return false;
+        addWidget(new Label(StringUtils.translate("options.blocksAway"), bgLeft + 117, bgTop + 60));
+
+        addWidget(new Label(StringUtils.translate("options.turnOff"), bgLeft + 10, bgTop + 80));
+
+        addWidget(fadeField = new SimpleTextField(bgLeft + 60, bgTop + 77, 50, fontRendererObj.FONT_HEIGHT + 4, 8,
+                SimpleTextField.Type.FLOATING_POINT));
+
+        addWidget(new Label(StringUtils.translate("options.blocksAway"), bgLeft + 117, bgTop + 80));
+
+        addWidget(new Label("TEST VERSION - skcraft.com", bgLeft + 10, bgTop + 132));
+
+        uriField.setText(projector.getMediaPlayer().getUri());
+        widthField.setText(Float.toString(projector.getMediaPlayer().getWidth()));
+        heightField.setText(Float.toString(projector.getMediaPlayer().getHeight()));
+        triggerField.setText(Float.toString(projector.getRange().getTriggerRange()));
+        fadeField.setText(Float.toString(projector.getRange().getFadeRange()));
     }
 }

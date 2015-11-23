@@ -22,7 +22,6 @@ import java.net.URI;
 @SideOnly(Side.CLIENT)
 public class GuiOptions extends GuiScreen {
 
-    public static final int ID = 0;
     private static final int xSize = 195;
     private static final int ySize = 214;
 
